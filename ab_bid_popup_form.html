@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中标与AB单配置原型</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f5f7fa;
+      color: #1f2329;
+    }
+    .page {
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(31, 35, 41, 0.06);
+      border: 1px solid #e5e6eb;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 16px 20px;
+      font-size: 18px;
+      font-weight: 600;
+      border-bottom: 1px solid #f0f0f0;
+      background: linear-gradient(180deg, #fff, #fafbfc);
+    }
+    .form-wrap {
+      padding: 22px 20px 28px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 18px 28px;
+      align-items: start;
+    }
+    .field {
+      min-width: 0;
+    }
+    .field.full {
+      grid-column: 1 / -1;
+    }
+    .label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #4e5969;
+    }
+    .required::after {
+      content: " *";
+      color: #f53f3f;
+    }
+    .input, .select, .textarea {
+      width: 100%;
+      border: 1px solid #d9dce3;
+      background: #fff;
+      border-radius: 8px;
+      min-height: 40px;
+      padding: 0 12px;
+      font-size: 14px;
+      color: #1d2129;
+      outline: none;
+      transition: all .2s ease;
+    }
+    .textarea {
+      min-height: 88px;
+      padding: 10px 12px;
+      resize: vertical;
+    }
+    .input:focus, .select:focus, .textarea:focus {
+      border-color: #4080ff;
+      box-shadow: 0 0 0 3px rgba(64,128,255,.12);
+    }
+    .readonly {
+      background: #f7f8fa;
+      color: #86909c;
+      cursor: not-allowed;
+    }
+    .radio-group {
+      display: flex;
+      gap: 16px;
+      height: 40px;
+      align-items: center;
+      padding: 0 4px;
+    }
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #1d2129;
+      cursor: pointer;
+    }
+    .inline-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      padding: 0 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tag.warning { background: #fff7e8; color: #d46b08; }
+    .tag.success { background: #e8ffea; color: #0e8a16; }
+    .btn {
+      height: 36px;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid #c9cdd4;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all .2s ease;
+    }
+    .btn:hover { border-color: #4080ff; color: #4080ff; }
+    .btn-primary {
+      border-color: #4080ff;
+      background: #4080ff;
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #2f6ef5;
+      border-color: #2f6ef5;
+      color: #fff;
+    }
+    .ab-panel {
+      margin-top: 6px;
+      padding: 16px;
+      border: 1px solid #dbe7ff;
+      border-radius: 10px;
+      background: #f7faff;
+    }
+    .summary-box {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .summary-item {
+      background: #fff;
+      border: 1px solid #e5e6eb;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .summary-item .k {
+      font-size: 12px;
+      color: #86909c;
+      margin-bottom: 6px;
+    }
+    .summary-item .v {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1d2129;
+      word-break: break-all;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .mask {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.38);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 999;
+    }
+    .mask.show { display: flex; }
+    .modal {
+      width: min(980px, 100%);
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.18);
+      overflow: hidden;
+    }
+    .modal-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid #edf0f3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .close {
+      border: none;
+      background: transparent;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: #86909c;
+    }
+    .modal-body {
+      padding: 20px;
+      max-height: 70vh;
+      overflow: auto;
+    }
+    .modal-footer {
+      padding: 16px 20px;
+      border-top: 1px solid #edf0f3;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      background: #fafbfc;
+    }
+    .tips {
+      margin-top: 8px;
+      color: #86909c;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .hide { display: none !important; }
+    @media (max-width: 1100px) {
+      .form-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+      .summary-box { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+    }
+    @media (max-width: 720px) {
+      .page { padding: 12px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .summary-box { grid-template-columns: 1fr; }
+      .modal { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="card-header">step3 - 中标信息与AB单配置</div>
+      <div class="form-wrap">
+        <div class="form-grid">
+          <div class="field">
+            <label class="label required">是否中标</label>
+            <select id="isAwarded" class="select">
+              <option value="">请选择</option>
+              <option value="yes" selected>是</option>
+              <option value="no">否</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label">客户合同</label>
+            <input class="input readonly" value="SHA-科博达技术股份有限公司" readonly />
+          </div>
+
+          <div class="field">
+            <label class="label">会计单位</label>
+            <input class="input readonly" value="上海圣辰供应链有限公司" readonly />
+          </div>
+
+          <div class="field">
+            <label class="label">项目名称</label>
+            <select class="select">
+              <option>请选择</option>
+              <option>意大利项目</option>
+              <option>欧洲陆运项目</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label">实际委托人</label>
+            <input class="input readonly" value="科博达技术股份有限公司" readonly />
+          </div>
+
+          <div class="field">
+            <label class="label">线路名称</label>
+            <input class="input readonly" value="科博达-嘉兴-意大利" readonly />
+          </div>
+
+          <div class="field full" id="abDecisionField">
+            <label class="label required">是否AB单</label>
+            <div class="radio-group">
+              <label class="radio-item"><input type="radio" name="isAB" value="yes" /> 是</label>
+              <label class="radio-item"><input type="radio" name="isAB" value="no" checked /> 否</label>
+            </div>
+          </div>
+
+          <div class="field full hide" id="abConfigPanelWrap">
+            <div class="ab-panel">
+              <div class="inline-row" style="justify-content: space-between; align-items: center;">
+                <div class="inline-row">
+                  <span style="font-size:14px;color:#4e5969;">AB单配置状态</span>
+                  <span class="tag warning" id="abStatusTag">未配置</span>
+                </div>
+                <div class="inline-row">
+                  <button class="btn btn-primary" id="openAbConfigBtn" type="button">配置AB单</button>
+                </div>
+              </div>
+
+              <div class="summary-box" id="abSummary" style="display:none;">
+                <div class="summary-item">
+                  <div class="k">中间签约客户</div>
+                  <div class="v" id="summaryCustomer">-</div>
+                </div>
+                <div class="summary-item">
+                  <div class="k">加成方式</div>
+                  <div class="v" id="summaryType">-</div>
+                </div>
+                <div class="summary-item">
+                  <div class="k">加成值</div>
+                  <div class="v" id="summaryValue">-</div>
+                </div>
+                <div class="summary-item">
+                  <div class="k">费用生成方式</div>
+                  <div class="v" id="summaryFeeMode">-</div>
+                </div>
+              </div>
+
+              <div class="tips">
+                说明：当“是否中标”选择“是”，且“是否AB单”选择“是”时，必须完成AB单信息录入后才可提交。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <button class="btn" type="button">取消</button>
+          <button class="btn btn-primary" id="submitBtn" type="button">提交</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mask" id="modalMask">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">AB单信息录入</div>
+        <button class="close" id="closeModalBtn" type="button">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="field">
+            <label class="label required">中间签约客户</label>
+            <select id="midCustomer" class="select">
+              <option value="">请选择</option>
+              <option value="上海XX供应链有限公司">上海XX供应链有限公司</option>
+              <option value="苏州XX物流有限公司">苏州XX物流有限公司</option>
+              <option value="深圳XX国际货运代理有限公司">深圳XX国际货运代理有限公司</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label">中间签约客户合同</label>
+            <select id="midContract" class="select">
+              <option value="">请选择</option>
+              <option value="HT-2026-AB-001">HT-2026-AB-001</option>
+              <option value="HT-2026-AB-002">HT-2026-AB-002</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label required">加成方式</label>
+            <select id="markupType" class="select">
+              <option value="">请选择</option>
+              <option value="ratio">按比例</option>
+              <option value="fixed">按固定金额</option>
+            </select>
+          </div>
+
+          <div class="field" id="ratioField">
+            <label class="label required">加成比例</label>
+            <input id="markupRatio" class="input" placeholder="如：5" />
+            <div class="tips">请输入数字，默认表示 %。</div>
+          </div>
+
+          <div class="field hide" id="fixedField">
+            <label class="label required">加成金额</label>
+            <input id="markupFixed" class="input" placeholder="请输入金额" />
+          </div>
+
+          <div class="field">
+            <label class="label required">费用生成方式</label>
+            <select id="feeMode" class="select">
+              <option value="">请选择</option>
+              <option value="整单生成">按整单生成</option>
+              <option value="费用明细生成">按费用明细生成</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label class="label">备注</label>
+            <textarea id="remark" class="textarea" placeholder="请输入AB单配置说明"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" id="cancelModalBtn" type="button">取消</button>
+        <button class="btn btn-primary" id="saveAbBtn" type="button">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const isAwarded = document.getElementById('isAwarded');
+    const abDecisionField = document.getElementById('abDecisionField');
+    const abConfigPanelWrap = document.getElementById('abConfigPanelWrap');
+    const modalMask = document.getElementById('modalMask');
+    const openAbConfigBtn = document.getElementById('openAbConfigBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cancelModalBtn = document.getElementById('cancelModalBtn');
+    const saveAbBtn = document.getElementById('saveAbBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const abStatusTag = document.getElementById('abStatusTag');
+    const abSummary = document.getElementById('abSummary');
+
+    const markupType = document.getElementById('markupType');
+    const ratioField = document.getElementById('ratioField');
+    const fixedField = document.getElementById('fixedField');
+
+    const fields = {
+      midCustomer: document.getElementById('midCustomer'),
+      midContract: document.getElementById('midContract'),
+      markupType: document.getElementById('markupType'),
+      markupRatio: document.getElementById('markupRatio'),
+      markupFixed: document.getElementById('markupFixed'),
+      feeMode: document.getElementById('feeMode'),
+      remark: document.getElementById('remark')
+    };
+
+    let abSaved = false;
+
+    function getSelectedAB() {
+      const checked = document.querySelector('input[name="isAB"]:checked');
+      return checked ? checked.value : '';
+    }
+
+    function setStatus(saved) {
+      abSaved = saved;
+      abStatusTag.textContent = saved ? '已配置' : '未配置';
+      abStatusTag.className = saved ? 'tag success' : 'tag warning';
+      openAbConfigBtn.textContent = saved ? '查看/编辑AB单' : '配置AB单';
+      abSummary.style.display = saved ? 'grid' : 'none';
+    }
+
+    function openModal() {
+      modalMask.classList.add('show');
+    }
+
+    function closeModal() {
+      modalMask.classList.remove('show');
+    }
+
+    function updateMarkupFields() {
+      const val = markupType.value;
+      if (val === 'fixed') {
+        ratioField.classList.add('hide');
+        fixedField.classList.remove('hide');
+      } else {
+        ratioField.classList.remove('hide');
+        fixedField.classList.add('hide');
+      }
+    }
+
+    function updateAwardView() {
+      const awarded = isAwarded.value;
+      if (awarded === 'yes') {
+        abDecisionField.classList.remove('hide');
+        updateABView();
+      } else {
+        abDecisionField.classList.add('hide');
+        abConfigPanelWrap.classList.add('hide');
+      }
+    }
+
+    function updateABView(triggerOpen = false) {
+      const ab = getSelectedAB();
+      if (isAwarded.value === 'yes' && ab === 'yes') {
+        abConfigPanelWrap.classList.remove('hide');
+        if (triggerOpen && !abSaved) openModal();
+      } else {
+        abConfigPanelWrap.classList.add('hide');
+      }
+    }
+
+    function fillSummary() {
+      document.getElementById('summaryCustomer').textContent = fields.midCustomer.value || '-';
+      document.getElementById('summaryType').textContent = fields.markupType.value === 'ratio' ? '按比例' : '按固定金额';
+      document.getElementById('summaryValue').textContent = fields.markupType.value === 'ratio'
+        ? ((fields.markupRatio.value || '-') + '%')
+        : (fields.markupFixed.value || '-');
+      document.getElementById('summaryFeeMode').textContent = fields.feeMode.value || '-';
+    }
+
+    function validateAB() {
+      if (!fields.midCustomer.value) return '请选择中间签约客户';
+      if (!fields.markupType.value) return '请选择加成方式';
+      if (fields.markupType.value === 'ratio' && !fields.markupRatio.value.trim()) return '请输入加成比例';
+      if (fields.markupType.value === 'fixed' && !fields.markupFixed.value.trim()) return '请输入加成金额';
+      if (!fields.feeMode.value) return '请选择费用生成方式';
+      return '';
+    }
+
+    isAwarded.addEventListener('change', updateAwardView);
+
+    document.querySelectorAll('input[name="isAB"]').forEach(r => {
+      r.addEventListener('change', (e) => {
+        if (e.target.value === 'no' && abSaved) {
+          const ok = window.confirm('当前已录入AB单信息，改为“否”后将清空AB单配置，是否继续？');
+          if (!ok) {
+            document.querySelector('input[name="isAB"][value="yes"]').checked = true;
+            return;
+          }
+          setStatus(false);
+        }
+        updateABView(e.target.value === 'yes');
+      });
+    });
+
+    openAbConfigBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelModalBtn.addEventListener('click', closeModal);
+    modalMask.addEventListener('click', (e) => {
+      if (e.target === modalMask) closeModal();
+    });
+
+    markupType.addEventListener('change', updateMarkupFields);
+
+    saveAbBtn.addEventListener('click', () => {
+      const msg = validateAB();
+      if (msg) {
+        window.alert(msg);
+        return;
+      }
+      fillSummary();
+      setStatus(true);
+      closeModal();
+    });
+
+    submitBtn.addEventListener('click', () => {
+      if (isAwarded.value === 'yes' && getSelectedAB() === 'yes' && !abSaved) {
+        window.alert('该询价单已选择为AB单，请先完成AB单信息录入。');
+        openModal();
+        return;
+      }
+      window.alert('提交成功（原型示意）');
+    });
+
+    updateMarkupFields();
+    updateAwardView();
+  </script>
+</body>
+</html>
