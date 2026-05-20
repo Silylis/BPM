@@ -1,0 +1,933 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>说明</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/说明/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/说明/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9078" class="ax_default label transition notrs">
+        <div id="u9078_div" class=""></div>
+        <div id="u9078_text" class="text ">
+          <p><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;">功能要求：</span></p><p><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;">1、所有的筛选需要多选</span></p><p><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;">2、</span><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#000000;">已进入对账单的本次对账金额不能再次创建并生成对账单：包括草稿、审核状态、已开票、开票中状态下的运单/运输计划/费用下占用的已对账金额信息；</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#000000;">待对账金额关联的运单/运输计划/费用仍可进行对账</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#000000;">3、发起对账：只能同一网点下同一客户可以对账</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#000000;">4、本次对账金额：默认为待对账金额，可向下调整</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#000000;">5、</span><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#A30014;">待对账未税金额=没进入对账单的未税金额；待对账含税金额=没进入对账单的含税金额；暂存未税金额=草稿状态下的未税金额；暂存含税金额=草稿状态下的含税金额；</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#000000;">6、</span><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">已对账未税金额=运单总未税金额-待对账未税金额-暂存未税金额；已对账含税金额=运单总含税金额-待对账含税金额-暂存含税金额；</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">7、按比例记录本次对账金额后，需要计算运单下费用未税差额：【运单未税金额-已对账未税金额-本次对账未税金额-暂存未税金额】与【待对账未税金额】的差额，若存在差额，则将差额填充至金额最多的费用中（含税同理）</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">8、运单未税总金额=运单下所有费用未税金额相加和；运单含税总金额=运单下所有费用含税金额相加和</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">9、单条费用未税总金额=运单下单条费用未税金额；单条费用含税总金额=运单下费用含税金额</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">10、运单待对账未税金额=运单下所有费用待对账未税金额相加和；运单待对账含税总金额=运单下所有费用待对账含税金额相加和</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">11、按运单对账：单条费用待对账未税金额=费用待对账总金额*对账比率（本次对账未税金额/运单未税总金额）；单条费用待对账含税总金额=费用待对账总金额*对账比率（本次对账未税金额/运单未税总金额）*（1+税率）</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">12、每次对账单生成时记录任务ID，通过任务ID跟进对账单的操作流水，规则：B+8位数字自增（00000001开始，可讨论），同时对账单中的每条明细记录任务ID+自增序号，例如2025年4月24日生成的第一个对账单号任务ID为B00000001，明细初始序号为0001，序号通过任务ID+序号记录明细的操作流水。</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">操作流水记录方式为：操作人+操作时间+操作事项（操作事项结构化展示为：XX菜单-XX模块-XX功能-操作项：具体操作内容，比如客户对账-发起对账-发起运单对账-保存草稿：运单号：A本次对账未税金额为XX元；运单号：B本次对账未税金额为XX元；运单号C本次对账未税金额为XX元；对账单未税金额：XXX</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">元）</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">13、运单号、客户名称、客户合同、对账单号、开票申请单号、付款申请单号需要点击超链查看详情</span></p><p><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;color:#D9001B;">14、同一业务归属&amp;同一客户可对账；开票；付款</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9079" class="ax_default _三级标题 transition notrs">
+        <div id="u9079_div" class=""></div>
+        <div id="u9079_text" class="text ">
+          <p><span>取消对账</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9080" class="ax_default box_1 transition notrs">
+        <div id="u9080_div" class=""></div>
+        <div id="u9080_text" class="text ">
+          <p style="font-size:13px;"><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;font-size:14px;">对账单未税金额=运单本次对账未税金额累和=60，对账单含税金额=运单本次对账含税金额累和=62.7，</span><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;">对账单任务号：</span><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;font-size:14px;">B+年月日+6位数字自增，</span><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;">本次对账单号，对账单创建人，创建时间等，具体对账单字段查看客户对账单列表-字段说明</span></p><p style="font-size:13px;"><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;">运单未税待对账总金额40，含税待对账总金额41.8；运单本次对账未税金额60；本次对账含税金额62.7，暂存未税金额0，暂存含税金额0，对账单任务号：</span><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;font-size:14px;">B+年月日+6位数字自增（可讨论），对账单中的每条明细记录任务ID+自增序号（0000001起），</span><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;"><br>陆运费本次对账未税金额18，税率9%，本次对账含税金额19.62；待对账未税金额12；待对账含税金13.08，暂存未税金额0，暂存含税金额0，、对账单任务号：</span><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;font-size:14px;">B+年月日+6位数字自增（可讨论），对账单中的每条明细记录任务ID+运单自增序号（0000001起）+运单费用自增序列（0001），同一运单号用1个运单序列号</span><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;"><br>空运费本次对账未税金额24，税率0%，本次对账含税金额24；待对账未税金额16；待对账含税金额16，暂存未税金额0，暂存含税金额0，本次对账单号、对账单任务号：</span><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;font-size:14px;">B+年月日+6位数字自增（可讨论），对账单中的每条明细记录任务ID+运单自增序号（0000001起）+运单费用自增序列（0001）</span><span style="font-family:&quot;Arial Normal&quot;, &quot;Arial&quot;, sans-serif;"><br>其他费用本次对账未税金额18，税率6%，本次对账含税金额19.08；待对账未税金额12；待对账含税金额112.72，暂存未税金额0，暂存含税金额0，本次对账单号、对账单任务号：</span><span style="font-family:&quot;Nunito Sans&quot;, sans-serif;font-size:14px;">B+年月日+6位数字自增（可讨论），对账单中的每条明细记录任务ID+运单自增序号（0000001起）+运单费用自增序列（0001）</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9081" class="ax_default _三级标题 transition notrs">
+        <div id="u9081_div" class=""></div>
+        <div id="u9081_text" class="text ">
+          <p><span>原对账单信息</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9082" class="ax_default box_1 transition notrs">
+        <div id="u9082_div" class=""></div>
+        <div id="u9082_text" class="text ">
+          <p><span>运单未税待对账总金额40，含税待对账总金额41.8；运单本次对账未税金额60；本次对账含税金额62.7<br>陆运费本次对账未税金额18，税率9%，本次对账含税金额19.62；待对账未税金额12；待对账含税金13.08<br>空运费本次对账未税金额24，税率0%，本次对账含税金额24；待对账未税金额16；待对账含税金额16<br>其他费用本次对账未税金额18，税率6%，本次对账含税金额19.08；待对账未税金额12；待对账含税金额112.72</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (线段) -->
+      <div id="u9083" class="ax_default line transition notrs">
+        <svg data="images/说明_3/u1059.svg" id="u9083_img" class="img generatedImage">
+
+  <g transform="matrix(1 0 0 1 -70 -984 )">
+    <path d="M 0 0.5  L 2650 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 70 984 )" class="stroke" />
+  </g>
+        </svg>
+        <div id="u9083_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9084" class="ax_default _三级标题 transition notrs">
+        <div id="u9084_div" class=""></div>
+        <div id="u9084_text" class="text ">
+          <p><span>以1.1生成的对账单取消为例</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9085" class="ax_default _三级标题 transition notrs">
+        <div id="u9085_div" class=""></div>
+        <div id="u9085_text" class="text ">
+          <p><span>已生成对账单取消后对账单信息</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9086" class="ax_default box_1 transition notrs">
+        <div id="u9086_div" class=""></div>
+        <div id="u9086_text" class="text ">
+          <p><span>1、取消时记录取消的对账单任务ID，取消时，需要针对此对账单生成一个回冲任务ID（原基础上自增），明细序号ID（原基础上自增），在原任务ID的基础上，回冲任务ID所有费用值取负数<br>例如：原对账单任务ID为B00000001，对账单运单A明细序号为000001，陆运费明细序号为000001，自增到任务ID为B00000015时需取消对账，此时需要记录此对账单的回冲任务ID为B00000015，回冲明细序号按照任务序号自增，并且需要记录回冲任务ID于原任务ID的关系（任务ID00000015针对任务ID00000001做回冲），示例如下<br>2、对账单明细中占用的对账金额/暂存金额释放如下：</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (表格) -->
+      <div id="u9087" class="ax_default">
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9088" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1064.svg" id="u9088_img" class="img generatedImage" viewbox="0 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" />
+          </svg>
+          <div id="u9088_text" class="text ">
+            <p><span>原运单待对账未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9089" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1065.svg" id="u9089_img" class="img generatedImage" viewbox="197 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 197 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 0 )" class="stroke" />
+          </svg>
+          <div id="u9089_text" class="text ">
+            <p><span>原运单待对账含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9090" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1066.svg" id="u9090_img" class="img generatedImage" viewbox="393 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 393 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 0 )" class="stroke" />
+          </svg>
+          <div id="u9090_text" class="text ">
+            <p><span>释放后运单待对账未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9091" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1067.svg" id="u9091_img" class="img generatedImage" viewbox="590 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 590 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 0 )" class="stroke" />
+          </svg>
+          <div id="u9091_text" class="text ">
+            <p><span>释放后运单待对账含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9092" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1068.svg" id="u9092_img" class="img generatedImage" viewbox="787 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 787 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 0 )" class="stroke" />
+          </svg>
+          <div id="u9092_text" class="text ">
+            <p><span>原运单-陆运费待对账未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9093" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1069.svg" id="u9093_img" class="img generatedImage" viewbox="983 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 983 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 0 )" class="stroke" />
+          </svg>
+          <div id="u9093_text" class="text ">
+            <p><span>原运单-陆运费待对账含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9094" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1070.svg" id="u9094_img" class="img generatedImage" viewbox="1180 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1180 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 0 )" class="stroke" />
+          </svg>
+          <div id="u9094_text" class="text ">
+            <p><span>释放后运单-陆运费待对账未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9095" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1071.svg" id="u9095_img" class="img generatedImage" viewbox="1377 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1377 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 0 )" class="stroke" />
+          </svg>
+          <div id="u9095_text" class="text ">
+            <p><span>释放后运单-陆运费待对账含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9096" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1072.svg" id="u9096_img" class="img generatedImage" viewbox="1573 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1573 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 0 )" class="stroke" />
+          </svg>
+          <div id="u9096_text" class="text ">
+            <p><span>原运单待对账-空运费未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9097" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1073.svg" id="u9097_img" class="img generatedImage" viewbox="1770 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1770 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 0 )" class="stroke" />
+          </svg>
+          <div id="u9097_text" class="text ">
+            <p><span>原运单待对账-空运费含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9098" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1074.svg" id="u9098_img" class="img generatedImage" viewbox="1967 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1967 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 0 )" class="stroke" />
+          </svg>
+          <div id="u9098_text" class="text ">
+            <p><span>释放后运单待对账-空运费未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9099" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1075.svg" id="u9099_img" class="img generatedImage" viewbox="2163 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2163 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 0 )" class="stroke" />
+          </svg>
+          <div id="u9099_text" class="text ">
+            <p><span>释放后运单待对账-空运费含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9100" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1076.svg" id="u9100_img" class="img generatedImage" viewbox="2360 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2360 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2360 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2360 0 )" class="stroke" />
+          </svg>
+          <div id="u9100_text" class="text ">
+            <p><span>原运单待对账-其他费用未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9101" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1077.svg" id="u9101_img" class="img generatedImage" viewbox="2557 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2557 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2557 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2557 0 )" class="stroke" />
+          </svg>
+          <div id="u9101_text" class="text ">
+            <p><span>原运单待对账-其他费用含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9102" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1078.svg" id="u9102_img" class="img generatedImage" viewbox="2753 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2753 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2753 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2753 0 )" class="stroke" />
+          </svg>
+          <div id="u9102_text" class="text ">
+            <p><span>释放后运单待对账-其他费用未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9103" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1079.svg" id="u9103_img" class="img generatedImage" viewbox="2950 0 197 34">
+
+  <path d="M 1 1  L 196 1  L 196 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2950 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2950 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2950 0 )" class="stroke" />
+  <path d="M 196.5 1  L 196.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2950 0 )" class="stroke" />
+          </svg>
+          <div id="u9103_text" class="text ">
+            <p><span>释放后运单待对账-其他费用含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9104" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1080.svg" id="u9104_img" class="img generatedImage" viewbox="0 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 0 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 0 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 0 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 0 34 )" class="stroke" />
+          </svg>
+          <div id="u9104_text" class="text ">
+            <p><span>40</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9105" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1081.svg" id="u9105_img" class="img generatedImage" viewbox="197 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 197 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 34 )" class="stroke" />
+          </svg>
+          <div id="u9105_text" class="text ">
+            <p><span>41.8</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9106" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1082.svg" id="u9106_img" class="img generatedImage" viewbox="393 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 393 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 34 )" class="stroke" />
+          </svg>
+          <div id="u9106_text" class="text ">
+            <p><span>=40+60=100</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9107" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1083.svg" id="u9107_img" class="img generatedImage" viewbox="590 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 590 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 34 )" class="stroke" />
+          </svg>
+          <div id="u9107_text" class="text ">
+            <p><span>=所有释放费用含税金额累加和=104.5</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9108" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1084.svg" id="u9108_img" class="img generatedImage" viewbox="787 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 787 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 34 )" class="stroke" />
+          </svg>
+          <div id="u9108_text" class="text ">
+            <p><span>12</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9109" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1085.svg" id="u9109_img" class="img generatedImage" viewbox="983 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 983 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 34 )" class="stroke" />
+          </svg>
+          <div id="u9109_text" class="text ">
+            <p><span>13.08</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9110" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1086.svg" id="u9110_img" class="img generatedImage" viewbox="1180 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1180 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 34 )" class="stroke" />
+          </svg>
+          <div id="u9110_text" class="text ">
+            <p><span>30</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9111" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1087.svg" id="u9111_img" class="img generatedImage" viewbox="1377 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1377 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 34 )" class="stroke" />
+          </svg>
+          <div id="u9111_text" class="text ">
+            <p><span>32.7</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9112" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1088.svg" id="u9112_img" class="img generatedImage" viewbox="1573 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1573 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 34 )" class="stroke" />
+          </svg>
+          <div id="u9112_text" class="text ">
+            <p><span>16</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9113" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1089.svg" id="u9113_img" class="img generatedImage" viewbox="1770 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1770 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 34 )" class="stroke" />
+          </svg>
+          <div id="u9113_text" class="text ">
+            <p><span>16</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9114" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1090.svg" id="u9114_img" class="img generatedImage" viewbox="1967 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1967 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 34 )" class="stroke" />
+          </svg>
+          <div id="u9114_text" class="text ">
+            <p><span>40</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9115" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1091.svg" id="u9115_img" class="img generatedImage" viewbox="2163 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2163 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 34 )" class="stroke" />
+          </svg>
+          <div id="u9115_text" class="text ">
+            <p><span>40</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9116" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1092.svg" id="u9116_img" class="img generatedImage" viewbox="2360 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2360 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2360 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2360 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2360 34 )" class="stroke" />
+          </svg>
+          <div id="u9116_text" class="text ">
+            <p><span>12</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9117" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1093.svg" id="u9117_img" class="img generatedImage" viewbox="2557 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2557 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2557 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2557 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2557 34 )" class="stroke" />
+          </svg>
+          <div id="u9117_text" class="text ">
+            <p><span>12.72</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9118" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1094.svg" id="u9118_img" class="img generatedImage" viewbox="2753 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2753 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2753 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2753 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2753 34 )" class="stroke" />
+          </svg>
+          <div id="u9118_text" class="text ">
+            <p><span>30</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9119" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1095.svg" id="u9119_img" class="img generatedImage" viewbox="2950 34 197 34">
+
+  <path d="M 1 1  L 196 1  L 196 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2950 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2950 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2950 34 )" class="stroke" />
+  <path d="M 196.5 1  L 196.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2950 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2950 34 )" class="stroke" />
+          </svg>
+          <div id="u9119_text" class="text ">
+            <p><span>31.8</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9120" class="ax_default _三级标题 transition notrs">
+        <div id="u9120_div" class=""></div>
+        <div id="u9120_text" class="text ">
+          <p><span>草稿对账单取消后</span></p><p><span>对账单信息</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9121" class="ax_default box_1 transition notrs">
+        <div id="u9121_div" class=""></div>
+        <div id="u9121_text" class="text ">
+          <p><span>1、取消时记录取消的对账单任务ID，取消时，需要针对此对账单生成一个回冲任务ID（原基础上自增），明细序号ID（原基础上自增），在原任务ID的基础上，回冲任务ID所有费用值取负数<br>2、运单的暂存金额需要每次都记录暂存的序号，运单A目前待对账未税金额10，含税金额12.4；陆运费待对账未税金额0，含税金额0；空运费未税金额3，含税金额3；如草稿对账单01中运单A的暂存未税金额为40元，含税42.4；草稿对账单02中运单A的暂存金额为20元，现取消草稿对账单01</span></p><p><span>3、草稿对账单01中的运单，空运费暂存未税金额10，税率0,；陆运费暂存未税金额30，税率9%；<br>4、原对账单明细中占用的对账金额/暂存金额释放如下：</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (表格) -->
+      <div id="u9122" class="ax_default">
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9123" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1064.svg" id="u9123_img" class="img generatedImage" viewbox="0 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" />
+          </svg>
+          <div id="u9123_text" class="text ">
+            <p><span>原运单草稿对账单01运单A暂存未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9124" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1065.svg" id="u9124_img" class="img generatedImage" viewbox="197 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 197 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 0 )" class="stroke" />
+          </svg>
+          <div id="u9124_text" class="text ">
+            <p><span>原运单草稿对账单01运单A暂存含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9125" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1066.svg" id="u9125_img" class="img generatedImage" viewbox="393 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 393 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 0 )" class="stroke" />
+          </svg>
+          <div id="u9125_text" class="text ">
+            <p><span>释放后运单A待对账未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9126" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1067.svg" id="u9126_img" class="img generatedImage" viewbox="590 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 590 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 0 )" class="stroke" />
+          </svg>
+          <div id="u9126_text" class="text ">
+            <p><span>释放后运单A待对账含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9127" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1068.svg" id="u9127_img" class="img generatedImage" viewbox="787 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 787 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 0 )" class="stroke" />
+          </svg>
+          <div id="u9127_text" class="text ">
+            <p><span>原运单A-陆运费待对账未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9128" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1069.svg" id="u9128_img" class="img generatedImage" viewbox="983 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 983 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 0 )" class="stroke" />
+          </svg>
+          <div id="u9128_text" class="text ">
+            <p><span>原运单-陆运费待对账含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9129" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1070.svg" id="u9129_img" class="img generatedImage" viewbox="1180 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1180 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 0 )" class="stroke" />
+          </svg>
+          <div id="u9129_text" class="text ">
+            <p><span>释放后运单-陆运费待对账未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9130" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1071.svg" id="u9130_img" class="img generatedImage" viewbox="1377 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1377 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 0 )" class="stroke" />
+          </svg>
+          <div id="u9130_text" class="text ">
+            <p><span>释放后运单-陆运费待对账含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9131" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1072.svg" id="u9131_img" class="img generatedImage" viewbox="1573 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1573 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 0 )" class="stroke" />
+          </svg>
+          <div id="u9131_text" class="text ">
+            <p><span>原运单待对账-空运费未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9132" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1073.svg" id="u9132_img" class="img generatedImage" viewbox="1770 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1770 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 0 )" class="stroke" />
+          </svg>
+          <div id="u9132_text" class="text ">
+            <p><span>原运单待对账-空运费含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9133" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1074.svg" id="u9133_img" class="img generatedImage" viewbox="1967 0 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1967 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 0 )" class="stroke" />
+          </svg>
+          <div id="u9133_text" class="text ">
+            <p><span>释放后运单待对账-空运费未税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9134" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1110.svg" id="u9134_img" class="img generatedImage" viewbox="2163 0 197 34">
+
+  <path d="M 1 1  L 196 1  L 196 34  L 1 34  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2163 0 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 0 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 0 )" class="stroke" />
+  <path d="M 196.5 1  L 196.5 34  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 0 )" class="stroke" />
+          </svg>
+          <div id="u9134_text" class="text ">
+            <p><span>释放后运单待对账-空运费含税金额</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9135" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1080.svg" id="u9135_img" class="img generatedImage" viewbox="0 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 0 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 0 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 0 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 0 34 )" class="stroke" />
+          </svg>
+          <div id="u9135_text" class="text ">
+            <p><span>40</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9136" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1081.svg" id="u9136_img" class="img generatedImage" viewbox="197 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 197 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 197 34 )" class="stroke" />
+          </svg>
+          <div id="u9136_text" class="text ">
+            <p><span>42.4</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9137" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1082.svg" id="u9137_img" class="img generatedImage" viewbox="393 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 393 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 393 34 )" class="stroke" />
+          </svg>
+          <div id="u9137_text" class="text ">
+            <p><span>=40+10=50</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9138" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1083.svg" id="u9138_img" class="img generatedImage" viewbox="590 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 590 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 590 34 )" class="stroke" />
+          </svg>
+          <div id="u9138_text" class="text ">
+            <p><span>=所有费用的待对账含税金额=32.7+13=45.7</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9139" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1084.svg" id="u9139_img" class="img generatedImage" viewbox="787 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 787 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 787 34 )" class="stroke" />
+          </svg>
+          <div id="u9139_text" class="text ">
+            <p><span>0</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9140" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1085.svg" id="u9140_img" class="img generatedImage" viewbox="983 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 983 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 983 34 )" class="stroke" />
+          </svg>
+          <div id="u9140_text" class="text ">
+            <p><span>0</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9141" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1086.svg" id="u9141_img" class="img generatedImage" viewbox="1180 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1180 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1180 34 )" class="stroke" />
+          </svg>
+          <div id="u9141_text" class="text ">
+            <p><span>=30+0=30</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9142" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1087.svg" id="u9142_img" class="img generatedImage" viewbox="1377 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1377 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1377 34 )" class="stroke" />
+          </svg>
+          <div id="u9142_text" class="text ">
+            <p><span>=30*1.09+0=32.7</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9143" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1088.svg" id="u9143_img" class="img generatedImage" viewbox="1573 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1573 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1573 34 )" class="stroke" />
+          </svg>
+          <div id="u9143_text" class="text ">
+            <p><span>3</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9144" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1089.svg" id="u9144_img" class="img generatedImage" viewbox="1770 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1770 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1770 34 )" class="stroke" />
+          </svg>
+          <div id="u9144_text" class="text ">
+            <p><span>3</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9145" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1090.svg" id="u9145_img" class="img generatedImage" viewbox="1967 34 197 34">
+
+  <path d="M 1 1  L 197 1  L 197 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 1967 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 1967 34 )" class="stroke" />
+          </svg>
+          <div id="u9145_text" class="text ">
+            <p><span>=3+10=13</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (单元格) -->
+        <div id="u9146" class="ax_default table_cell transition notrs">
+          <svg data="images/说明_3/u1122.svg" id="u9146_img" class="img generatedImage" viewbox="2163 34 197 34">
+
+  <path d="M 1 1  L 196 1  L 196 33  L 1 33  L 1 1  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 2163 34 )" class="fill" />
+  <path d="M 0.5 1  L 0.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 34 )" class="stroke" />
+  <path d="M 0 0.5  L 197 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 34 )" class="stroke" />
+  <path d="M 196.5 1  L 196.5 33  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 34 )" class="stroke" />
+  <path d="M 0 33.5  L 197 33.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" transform="matrix(1 0 0 1 2163 34 )" class="stroke" />
+          </svg>
+          <div id="u9146_text" class="text ">
+            <p><span>=10*1+3=13</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u9147" class="ax_default _三级标题 transition notrs">
+        <div id="u9147_div" class=""></div>
+        <div id="u9147_text" class="text ">
+          <p><span>4.29变更</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (图片) -->
+      <div id="u9148" class="ax_default _图片_ transition notrs">
+        <img id="u9148_img" class="img " src="images/说明_3/u1124.png"/>
+        <div id="u9148_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>
