@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BPM 产品原型合集</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+    /* 顶部导航 */
+    .topbar {
+      background: #1a1a2e;
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .topbar-logo { color: #fff; font-size: 18px; font-weight: 700; letter-spacing: 1px; }
+    .topbar-logo span { color: #4f9cf9; }
+    .topbar-meta { color: #8899aa; font-size: 13px; }
+
+    /* 搜索栏 */
+    .search-wrap {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      padding: 40px 32px 32px;
+      text-align: center;
+    }
+    .search-wrap h1 { color: #fff; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .search-wrap p { color: #8899cc; font-size: 14px; margin-bottom: 24px; }
+    .search-box {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 12px 44px 12px 18px;
+      border-radius: 24px;
+      border: none;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .search-box input::placeholder { color: rgba(255,255,255,0.45); }
+    .search-box input:focus { background: rgba(255,255,255,0.2); }
+    .search-box .icon {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      color: rgba(255,255,255,0.5); font-size: 18px; pointer-events: none;
+    }
+
+    /* 主体 */
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px 60px; }
+
+    /* 统计栏 */
+    .stats {
+      display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap;
+    }
+    .stat-card {
+      background: #fff; border-radius: 10px; padding: 14px 24px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .stat-icon { font-size: 24px; }
+    .stat-num { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+    .stat-label { font-size: 12px; color: #888; margin-top: 1px; }
+
+    /* 分类标题 */
+    .section { margin-bottom: 36px; }
+    .section-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px; padding-bottom: 10px;
+      border-bottom: 2px solid #e8ecf0;
+    }
+    .section-icon { font-size: 20px; }
+    .section-title { font-size: 17px; font-weight: 700; color: #1a1a2e; }
+    .section-count {
+      background: #f0f2f5; color: #666;
+      font-size: 12px; padding: 2px 8px; border-radius: 10px;
+    }
+
+    /* 原型卡片网格 */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79,156,249,0.18);
+      border-color: #4f9cf9;
+    }
+    .card-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .card-name {
+      font-size: 13.5px; color: #333; font-weight: 500;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .card.hidden { display: none; }
+
+    /* 无结果 */
+    .no-result { text-align: center; padding: 60px; color: #aaa; font-size: 15px; display: none; }
+
+    /* 底部 */
+    .footer {
+      text-align: center; color: #aaa; font-size: 12px;
+      padding: 24px; border-top: 1px solid #e8ecf0;
+      margin-top: 40px;
+    }
+
+    /* 分类颜色 */
+    .color-supplier { background: #4f9cf9; }
+    .color-customer { background: #52c41a; }
+    .color-finance   { background: #fa8c16; }
+    .color-reconcile { background: #eb2f96; }
+    .color-price     { background: #722ed1; }
+    .color-transport { background: #13c2c2; }
+    .color-schedule  { background: #2f54eb; }
+    .color-inquiry   { background: #f5222d; }
+    .color-system    { background: #8c8c8c; }
+    .color-process   { background: #a0522d; }
+    .color-other     { background: #595959; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">BPM <span>原型</span></div>
+  <div class="topbar-meta">原型打包 12.18 · Silylis/BPM</div>
+</div>
+
+<div class="search-wrap">
+  <h1>📋 BPM 产品原型合集</h1>
+  <p>业务流程管理系统 · 完整原型库</p>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="搜索原型页面，如：供应商、对账单、发票…" oninput="filterCards()">
+    <span class="icon">🔍</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 统计 -->
+  <div class="stats">
+    <div class="stat-card"><span class="stat-icon">📄</span><div><div class="stat-num" id="totalCount">0</div><div class="stat-label">原型页面</div></div></div>
+    <div class="stat-card"><span class="stat-icon">📁</span><div><div class="stat-num">10</div><div class="stat-label">功能模块</div></div></div>
+    <div class="stat-card"><span class="stat-icon">🔗</span><div><div class="stat-num">Pages</div><div class="stat-label">在线访问</div></div></div>
+  </div>
+
+  <!-- 供应商管理 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">🏭</span>
+      <span class="section-title">供应商管理</span>
+      <span class="section-count" id="cnt-supplier"></span>
+    </div>
+    <div class="cards" id="sec-supplier">
+      <a class="card" href="原型打包12.18/供应商进入.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商进入</span></a>
+      <a class="card" href="原型打包12.18/供应商定点.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商定点</span></a>
+      <a class="card" href="原型打包12.18/供应商定点_1.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商定点_1</span></a>
+      <a class="card" href="原型打包12.18/供应商定点优化.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商定点优化</span></a>
+      <a class="card" href="原型打包12.18/供应商定点-供应商ab单.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商定点-供应商AB单</span></a>
+      <a class="card" href="原型打包12.18/供应商合同.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商合同</span></a>
+      <a class="card" href="原型打包12.18/供应商合同优化.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商合同优化</span></a>
+      <a class="card" href="原型打包12.18/供应商合同草稿.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商合同草稿</span></a>
+      <a class="card" href="原型打包12.18/供应商发票列表.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商发票列表</span></a>
+      <a class="card" href="原型打包12.18/供应商发票草稿.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商发票草稿</span></a>
+      <a class="card" href="原型打包12.18/供应商对账单列表.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商对账单列表</span></a>
+      <a class="card" href="原型打包12.18/供应商表单.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商表单</span></a>
+      <a class="card" href="原型打包12.18/供应商运单生成tms运输计划逻辑.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">运单生成TMS运输计划</span></a>
+      <a class="card" href="原型打包12.18/供应商运输计划.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商运输计划</span></a>
+      <a class="card" href="原型打包12.18/供应商运输计划_1.html" target="_blank"><span class="card-dot color-supplier"></span><span class="card-name">供应商运输计划_1</span></a>
+    </div>
+  </div>
+
+  <!-- 客户管理 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">👥</span>
+      <span class="section-title">客户管理</span>
+      <span class="section-count" id="cnt-customer"></span>
+    </div>
+    <div class="cards" id="sec-customer">
+      <a class="card" href="原型打包12.18/客户表单.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户表单</span></a>
+      <a class="card" href="原型打包12.18/客户合同.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户合同</span></a>
+      <a class="card" href="原型打包12.18/客户合同草稿.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户合同草稿</span></a>
+      <a class="card" href="原型打包12.18/客户发票列表.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户发票列表</span></a>
+      <a class="card" href="原型打包12.18/客户回款列表.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户回款列表</span></a>
+      <a class="card" href="原型打包12.18/客户回款草稿单.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户回款草稿单</span></a>
+      <a class="card" href="原型打包12.18/客户对账单列表.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户对账单列表</span></a>
+      <a class="card" href="原型打包12.18/客户运输计划.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户运输计划</span></a>
+      <a class="card" href="原型打包12.18/客户运输计划_1.html" target="_blank"><span class="card-dot color-customer"></span><span class="card-name">客户运输计划_1</span></a>
+    </div>
+  </div>
+
+  <!-- 付款与发票 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">💰</span>
+      <span class="section-title">付款与发票</span>
+      <span class="section-count" id="cnt-finance"></span>
+    </div>
+    <div class="cards" id="sec-finance">
+      <a class="card" href="原型打包12.18/付款流程.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">付款流程</span></a>
+      <a class="card" href="原型打包12.18/付款申请单.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">付款申请单</span></a>
+      <a class="card" href="原型打包12.18/付款申请单审核.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">付款申请单审核</span></a>
+      <a class="card" href="原型打包12.18/付款申请草稿单.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">付款申请草稿单</span></a>
+      <a class="card" href="原型打包12.18/付款详情.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">付款详情</span></a>
+      <a class="card" href="原型打包12.18/发票详情.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">发票详情</span></a>
+      <a class="card" href="原型打包12.18/发票作废审核.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">发票作废审核</span></a>
+      <a class="card" href="原型打包12.18/发票生成规则.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">发票生成规则</span></a>
+      <a class="card" href="原型打包12.18/关联发票.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">关联发票</span></a>
+      <a class="card" href="原型打包12.18/关联蓝字发票.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">关联蓝字发票</span></a>
+      <a class="card" href="原型打包12.18/开票申请单列表.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">开票申请单列表</span></a>
+      <a class="card" href="原型打包12.18/开票申请单审核.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">开票申请单审核</span></a>
+      <a class="card" href="原型打包12.18/开票申请单明细.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">开票申请单明细</span></a>
+      <a class="card" href="原型打包12.18/开票申请单明细_1.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">开票申请单明细_1</span></a>
+      <a class="card" href="原型打包12.18/取消开票.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">取消开票</span></a>
+      <a class="card" href="原型打包12.18/回款审核.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">回款审核</span></a>
+      <a class="card" href="原型打包12.18/回款核销详情.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">回款核销详情</span></a>
+      <a class="card" href="原型打包12.18/回款登记核销.html" target="_blank"><span class="card-dot color-finance"></span><span class="card-name">回款登记核销</span></a>
+    </div>
+  </div>
+
+  <!-- 对账管理 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">对账管理</span>
+      <span class="section-count" id="cnt-reconcile"></span>
+    </div>
+    <div class="cards" id="sec-reconcile">
+      <a class="card" href="原型打包12.18/对账单审核.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">对账单审核</span></a>
+      <a class="card" href="原型打包12.18/对账单审核_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">对账单审核_1</span></a>
+      <a class="card" href="原型打包12.18/对账单明细.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">对账单明细</span></a>
+      <a class="card" href="原型打包12.18/对账单明细_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">对账单明细_1</span></a>
+      <a class="card" href="原型打包12.18/对账单明细_2.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">对账单明细_2</span></a>
+      <a class="card" href="原型打包12.18/对账单明细_3.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">对账单明细_3</span></a>
+      <a class="card" href="原型打包12.18/对账单明细_4.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">对账单明细_4</span></a>
+      <a class="card" href="原型打包12.18/发起对账.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">发起对账</span></a>
+      <a class="card" href="原型打包12.18/发起对账_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">发起对账_1</span></a>
+      <a class="card" href="原型打包12.18/取消对账.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">取消对账</span></a>
+      <a class="card" href="原型打包12.18/取消对账_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">取消对账_1</span></a>
+      <a class="card" href="原型打包12.18/修改对账单.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">修改对账单</span></a>
+      <a class="card" href="原型打包12.18/修改对账单_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">修改对账单_1</span></a>
+      <a class="card" href="原型打包12.18/按费用对账.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">按费用对账</span></a>
+      <a class="card" href="原型打包12.18/按费用对账_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">按费用对账_1</span></a>
+      <a class="card" href="原型打包12.18/按费用预览.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">按费用预览</span></a>
+      <a class="card" href="原型打包12.18/按费用预览_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">按费用预览_1</span></a>
+      <a class="card" href="原型打包12.18/按运单预览.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">按运单预览</span></a>
+      <a class="card" href="原型打包12.18/按运单预览_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">按运单预览_1</span></a>
+      <a class="card" href="原型打包12.18/明细预览.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">明细预览</span></a>
+      <a class="card" href="原型打包12.18/明细预览_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">明细预览_1</span></a>
+      <a class="card" href="原型打包12.18/汇总预览.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">汇总预览</span></a>
+      <a class="card" href="原型打包12.18/汇总预览_1.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">汇总预览_1</span></a>
+      <a class="card" href="原型打包12.18/查看明细.html" target="_blank"><span class="card-dot color-reconcile"></span><span class="card-name">查看明细</span></a>
+    </div>
+  </div>
+
+  <!-- 价格单 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">🏷️</span>
+      <span class="section-title">价格单管理</span>
+      <span class="section-count" id="cnt-price"></span>
+    </div>
+    <div class="cards" id="sec-price">
+      <a class="card" href="原型打包12.18/价格单示例.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">价格单示例</span></a>
+      <a class="card" href="原型打包12.18/价格单示例_1.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">价格单示例_1</span></a>
+      <a class="card" href="原型打包12.18/价格单列表.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">价格单列表</span></a>
+      <a class="card" href="原型打包12.18/价格单列表_1.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">价格单列表_1</span></a>
+      <a class="card" href="原型打包12.18/价格单字段.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">价格单字段</span></a>
+      <a class="card" href="原型打包12.18/价格单修改记录.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">价格单修改记录</span></a>
+      <a class="card" href="原型打包12.18/新增价格单.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">新增价格单</span></a>
+      <a class="card" href="原型打包12.18/新增价格单_1.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">新增价格单_1</span></a>
+      <a class="card" href="原型打包12.18/新增价格单-优化.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">新增价格单-优化</span></a>
+      <a class="card" href="原型打包12.18/价格单子找.html" target="_blank"><span class="card-dot color-price"></span><span class="card-name">价格单子找</span></a>
+    </div>
+  </div>
+
+  <!-- 询价报价 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">📝</span>
+      <span class="section-title">询价 / 报价 / 中标</span>
+      <span class="section-count" id="cnt-inquiry"></span>
+    </div>
+    <div class="cards" id="sec-inquiry">
+      <a class="card" href="原型打包12.18/发起询价.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">发起询价</span></a>
+      <a class="card" href="原型打包12.18/按单线路发起询价.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">按单线路发起询价</span></a>
+      <a class="card" href="原型打包12.18/按单线路发起询价_1.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">按单线路发起询价_1</span></a>
+      <a class="card" href="原型打包12.18/按单线路提供报价.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">按单线路提供报价</span></a>
+      <a class="card" href="原型打包12.18/按单线路提供报价_1.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">按单线路提供报价_1</span></a>
+      <a class="card" href="原型打包12.18/按多线路发起询价.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">按多线路发起询价</span></a>
+      <a class="card" href="原型打包12.18/按多线路发起询价_1.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">按多线路发起询价_1</span></a>
+      <a class="card" href="原型打包12.18/按多线路提供报价.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">按多线路提供报价</span></a>
+      <a class="card" href="原型打包12.18/按多线路提供报价_1.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">按多线路提供报价_1</span></a>
+      <a class="card" href="原型打包12.18/客服确认中标.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">客服确认中标</span></a>
+      <a class="card" href="原型打包12.18/客服确认中标-客户ab单.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">客服确认中标-客户AB单</span></a>
+      <a class="card" href="原型打包12.18/单条线路客服维护客户中标信息.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">单线路维护中标信息</span></a>
+      <a class="card" href="原型打包12.18/单条线路客服维护客户中标信息_1.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">单线路维护中标信息_1</span></a>
+      <a class="card" href="原型打包12.18/多条线路客服维护客户中标信息.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">多线路维护中标信息</span></a>
+      <a class="card" href="原型打包12.18/多条线路客服维护客户中标信息_1.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">多线路维护中标信息_1</span></a>
+      <a class="card" href="原型打包12.18/单线路采购分享供应商信息.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">单线路采购分享供应商</span></a>
+      <a class="card" href="原型打包12.18/单线路采购分享供应商信息_1.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">单线路采购分享供应商_1</span></a>
+      <a class="card" href="原型打包12.18/多线路采购分享供应商信息.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">多线路采购分享供应商</span></a>
+      <a class="card" href="原型打包12.18/多线路采购分享供应商信息_1.html" target="_blank"><span class="card-dot color-inquiry"></span><span class="card-name">多线路采购分享供应商_1</span></a>
+    </div>
+  </div>
+
+  <!-- 运输 & TMS -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">🚚</span>
+      <span class="section-title">运输 / TMS / 日程单</span>
+      <span class="section-count" id="cnt-transport"></span>
+    </div>
+    <div class="cards" id="sec-transport">
+      <a class="card" href="原型打包12.18/tms运输计划.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">TMS 运输计划</span></a>
+      <a class="card" href="原型打包12.18/tms预运单详情.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">TMS 预运单详情</span></a>
+      <a class="card" href="原型打包12.18/新建日程单.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">新建日程单</span></a>
+      <a class="card" href="原型打包12.18/新建日程单_1.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">新建日程单_1</span></a>
+      <a class="card" href="原型打包12.18/新建日程单_2.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">新建日程单_2</span></a>
+      <a class="card" href="原型打包12.18/新建日程单_3.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">新建日程单_3</span></a>
+      <a class="card" href="原型打包12.18/新建日程单_4.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">新建日程单_4</span></a>
+      <a class="card" href="原型打包12.18/新建采购日程单.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">新建采购日程单</span></a>
+      <a class="card" href="原型打包12.18/日程单详情.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">日程单详情</span></a>
+      <a class="card" href="原型打包12.18/日程单详情_1.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">日程单详情_1</span></a>
+      <a class="card" href="原型打包12.18/日程单详情_2.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">日程单详情_2</span></a>
+      <a class="card" href="原型打包12.18/生成运单.html" target="_blank"><span class="card-dot color-transport"></span><span class="card-name">生成运单</span></a>
+    </div>
+  </div>
+
+  <!-- 合同 & 审批 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">✅</span>
+      <span class="section-title">合同 / 审批 / 变更</span>
+      <span class="section-count" id="cnt-process"></span>
+    </div>
+    <div class="cards" id="sec-process">
+      <a class="card" href="原型打包12.18/合同审核.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">合同审核</span></a>
+      <a class="card" href="原型打包12.18/合同审核_1.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">合同审核_1</span></a>
+      <a class="card" href="原型打包12.18/合同终止.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">合同终止</span></a>
+      <a class="card" href="原型打包12.18/合同终止_1.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">合同终止_1</span></a>
+      <a class="card" href="原型打包12.18/审核列表.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">审核列表</span></a>
+      <a class="card" href="原型打包12.18/我已审批.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">我已审批</span></a>
+      <a class="card" href="原型打包12.18/操作接单.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">操作接单</span></a>
+      <a class="card" href="原型打包12.18/操作接单_1.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">操作接单_1</span></a>
+      <a class="card" href="原型打包12.18/变更审批.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">变更审批</span></a>
+      <a class="card" href="原型打包12.18/变更审批_1.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">变更审批_1</span></a>
+      <a class="card" href="原型打包12.18/变更名称.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">变更名称</span></a>
+      <a class="card" href="原型打包12.18/变更名称_1.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">变更名称_1</span></a>
+      <a class="card" href="原型打包12.18/变更点.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">变更点</span></a>
+      <a class="card" href="原型打包12.18/申请付款.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">申请付款</span></a>
+      <a class="card" href="原型打包12.18/流程.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">流程</span></a>
+      <a class="card" href="原型打包12.18/流程_1.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">流程_1</span></a>
+      <a class="card" href="原型打包12.18/流程_2.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">流程_2</span></a>
+      <a class="card" href="原型打包12.18/流程_3.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">流程_3</span></a>
+      <a class="card" href="原型打包12.18/整体流程.html" target="_blank"><span class="card-dot color-process"></span><span class="card-name">整体流程</span></a>
+    </div>
+  </div>
+
+  <!-- 系统配置 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">⚙️</span>
+      <span class="section-title">系统配置</span>
+      <span class="section-count" id="cnt-system"></span>
+    </div>
+    <div class="cards" id="sec-system">
+      <a class="card" href="原型打包12.18/会计单位_部门权限配置.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">会计单位_部门权限配置</span></a>
+      <a class="card" href="原型打包12.18/会计单位管理.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">会计单位管理</span></a>
+      <a class="card" href="原型打包12.18/会计期间设置.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">会计期间设置</span></a>
+      <a class="card" href="原型打包12.18/信贷期间设置.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">信贷期间设置</span></a>
+      <a class="card" href="原型打包12.18/币种管理.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">币种管理</span></a>
+      <a class="card" href="原型打包12.18/汇率管理.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">汇率管理</span></a>
+      <a class="card" href="原型打包12.18/域管理.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">域管理</span></a>
+      <a class="card" href="原型打包12.18/模块开启设置.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">模块开启设置</span></a>
+      <a class="card" href="原型打包12.18/地址库管理.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">地址库管理</span></a>
+      <a class="card" href="原型打包12.18/服务范围管理.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">服务范围管理</span></a>
+      <a class="card" href="原型打包12.18/机场代码维护.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">机场代码维护</span></a>
+      <a class="card" href="原型打包12.18/司机管理.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">司机管理</span></a>
+      <a class="card" href="原型打包12.18/新增司机.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">新增司机</span></a>
+      <a class="card" href="原型打包12.18/新增生成规则.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">新增生成规则</span></a>
+      <a class="card" href="原型打包12.18/同步记录_修改记录.html" target="_blank"><span class="card-dot color-system"></span><span class="card-name">同步记录_修改记录</span></a>
+    </div>
+  </div>
+
+  <!-- 其他 -->
+  <div class="section" data-section>
+    <div class="section-header">
+      <span class="section-icon">📋</span>
+      <span class="section-title">其他页面</span>
+      <span class="section-count" id="cnt-other"></span>
+    </div>
+    <div class="cards" id="sec-other">
+      <a class="card" href="原型打包12.18/1月6日新增汇总.html" target="_blank"><span class="card-dot color-other"></span><span class="card-name">1月6日新增汇总</span></a>
+      <a class="card" href="原型打包12.18/2_29优化.html" target="_blank"><span class="card-dot color-other"></span><span class="card-name">2_29优化</span></a>
+      <a class="card" href="原型打包12.18/ab单.html" target="_blank"><span class="card-dot color-other"></span><span class="card-name">AB单</span></a>
+      <a class="card" href="ab_bid_popup_form.html" target="_blank"><span class="card-dot color-other"></span><span class="card-name">ab_bid_popup_form</span></a>
+    </div>
+  </div>
+
+  <div class="no-result" id="noResult">😕 没有找到匹配的原型页面</div>
+
+</div>
+
+<div class="footer">
+  BPM 产品原型合集 · Silylis/BPM · 由 WorkBuddy 自动生成 · 最后更新：2026-05-21
+</div>
+
+<script>
+  // 统计各模块卡片数并更新
+  const sections = [
+    { id: 'sec-supplier', cnt: 'cnt-supplier' },
+    { id: 'sec-customer', cnt: 'cnt-customer' },
+    { id: 'sec-finance',  cnt: 'cnt-finance'  },
+    { id: 'sec-reconcile',cnt: 'cnt-reconcile'},
+    { id: 'sec-price',    cnt: 'cnt-price'    },
+    { id: 'sec-inquiry',  cnt: 'cnt-inquiry'  },
+    { id: 'sec-transport',cnt: 'cnt-transport'},
+    { id: 'sec-process',  cnt: 'cnt-process'  },
+    { id: 'sec-system',   cnt: 'cnt-system'   },
+    { id: 'sec-other',    cnt: 'cnt-other'    },
+  ];
+  let total = 0;
+  sections.forEach(s => {
+    const n = document.getElementById(s.id).querySelectorAll('.card').length;
+    document.getElementById(s.cnt).textContent = n + ' 个';
+    total += n;
+  });
+  document.getElementById('totalCount').textContent = total;
+
+  // 搜索过滤
+  function filterCards() {
+    const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    const allCards = document.querySelectorAll('.card');
+    let visible = 0;
+    allCards.forEach(c => {
+      const match = !q || c.querySelector('.card-name').textContent.toLowerCase().includes(q);
+      c.classList.toggle('hidden', !match);
+      if (match) visible++;
+    });
+    // 隐藏空模块
+    document.querySelectorAll('[data-section]').forEach(sec => {
+      const hasVisible = sec.querySelectorAll('.card:not(.hidden)').length > 0;
+      sec.style.display = (q && !hasVisible) ? 'none' : '';
+    });
+    document.getElementById('noResult').style.display = (q && visible === 0) ? 'block' : 'none';
+  }
+</script>
+</body>
+</html>
